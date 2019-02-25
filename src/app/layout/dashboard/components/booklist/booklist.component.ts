@@ -48,9 +48,11 @@ export class BookListComponent implements OnInit {
   ngOnInit() {
   this.displayedColumns = [ 'Image','Name','Author', 'AvailableCopies', 'BlockedCopies','actions'];
   this.configService.getConfigDetails().subscribe(details => this.result = details,error => this.errorMessage = <any>error );
-
-    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    this.roleType = this.currentUser.RoleType === 0 ? true : false;
+  var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  if(currentUser !== null)
+  {
+  this.roleType = currentUser.RoleType === 0 ? true : false;
+  }
     if(!this.roleType)
     {
       this.displayedColumns = [ 'Image','Name','Author', 'AvailableCopies', 'NumberOfCopies','edit','actions'];

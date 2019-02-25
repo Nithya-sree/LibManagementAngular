@@ -39,8 +39,12 @@ export class SidebarComponent implements OnInit {
         this.collapsed = false;
         this.showMenu = '';
         this.pushRightClass = 'push-right';
-        this.roleType = JSON.parse(localStorage.getItem('currentUser')).RoleType === 0 ? true : false;
-        this.UserName =  JSON.parse(localStorage.getItem('currentUser')).UserName;
+        var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        if(currentUser !== null)
+        {
+        this.UserName =  currentUser.UserName;
+        this.roleType = currentUser.RoleType === 0 ? true : false;
+        }
     }
 
 
