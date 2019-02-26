@@ -1,25 +1,24 @@
 import { Injectable }   from '@angular/core';
-import { HttpClient,HttpErrorResponse, HttpResponse, HttpEvent }   from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpResponse, HttpEvent }   from '@angular/common/http';
 import {tap, catchError, map} from 'rxjs/operators';
-//import {AdminConfiguration} from '../model/adminConfiguration.model';
+// import {AdminConfiguration} from '../model/adminConfiguration.model';
 import { Observable } from 'rxjs';
 
 @Injectable()
-export class ConfigurationService
-{
+export class ConfigurationService {
     private serviceUrl = 'https://librarymanagement20190208054654.azurewebsites.net/api/config';
     private handleError;
 
-    constructor(private http: HttpClient)
-    {
+    constructor(private http: HttpClient) {
 
     }
 
     getConfigDetails() {
         return this.http.get(this.serviceUrl).pipe(
 
-            tap(data => 
-                console.log('All: ' + JSON.stringify(data))),
+            tap(data => {
+                console.log('All: ' + JSON.stringify(data));
+            }),
         catchError(this.handleError)
         );
     }

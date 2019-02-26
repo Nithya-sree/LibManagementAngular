@@ -46,7 +46,14 @@ export class BookListComponent implements OnInit {
   }
 
   ngOnInit() {
-  this.configService.getConfigDetails().subscribe(details => this.result = details, error => this.errorMessage = <any>error );
+  this.configService.getConfigDetails().subscribe(
+    details => {
+    this.result = details;
+    localStorage.setItem('configValues', JSON.stringify(this.details));
+    } ,
+    error => {
+      console.error('getConfigDetails' + error);
+     this.errorMessage = <any>error; });
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     if (this.currentUser !== null) {
     this.roleType = this.currentUser.RoleType === 0 ? true : false;
