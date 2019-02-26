@@ -49,7 +49,7 @@ export class BookListComponent implements OnInit {
   this.configService.getConfigDetails().subscribe(
     details => {
     this.result = details;
-    localStorage.setItem('configValues', JSON.stringify(this.details));
+    localStorage.setItem('configValues', JSON.stringify(details));
     } ,
     error => {
       console.error('getConfigDetails' + error);
