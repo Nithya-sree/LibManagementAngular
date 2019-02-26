@@ -25,7 +25,7 @@
             <i class="fa fa-fw fa-dashboard"></i>&nbsp;
             <span>{{ 'Dashboard' | translate }}</span>
         </a>
-        <a routerLink="/user-details" [routerLinkActive]="['router-link-active']" class="list-group-item">
+        <a routerLink="/user-details" [routerLinkActive]="['router-link-active']" class="list-group-item" *ngIf="!roleType">
             <i class="fa fa-fw fa-user"></i>&nbsp;
             <span>{{ 'User Details' | translate }}</span>
         </a>
@@ -36,6 +36,10 @@
         <a routerLink="/books" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-fw fa-book"></i>&nbsp;
             <span>{{ 'Books' | translate }}</span>
+        </a>
+        <a routerLink="/changePassword" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-key"></i>&nbsp;
+            <span>{{ 'Change Password' | translate }}</span>
         </a>
         <a [routerLink]="['/charts']" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-fw fa-bar-chart-o"></i>&nbsp;

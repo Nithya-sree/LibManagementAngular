@@ -43,4 +43,15 @@ export class UserService {
                       }));
     }
 
+    changePassword(login : Login)
+    {
+      let getHeaders = new HttpHeaders({
+        'Content-Type': 'application/json',
+    });
+    return this.http.post('https://librarymanagement20190208054654.azurewebsites.net/api/Registration/ChangePassword',login, { headers: getHeaders })
+    .pipe(map(res => {
+    return true;
+    }));
+    }
+
 }
