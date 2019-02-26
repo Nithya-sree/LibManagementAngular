@@ -15,19 +15,20 @@ export class LoginComponent implements OnInit {
     loginForm: FormGroup;
     hide = true;
     submitted = false;
-    isValid=false;
-    HideForm : boolean;
-    myVar : boolean;
-    checkvalue : boolean;
-    ShowInvalidLogin : boolean;
-    constructor(private translate: TranslateService,
-        public router: Router,private formBuilder:FormBuilder,  private authService : AuthenticationService) 
-        {
-            // this.translate.addLangs(['en', 'fr', 'ur', 'es', 'it', 'fa', 'de', 'zh-CHS']);
-            // this.translate.setDefaultLang('en');
-            // const browserLang = this.translate.getBrowserLang();
-            // this.translate.use(browserLang.match(/en|fr|ur|es|it|fa|de|zh-CHS/) ? browserLang : 'en');
-        }
+    isValid = false;
+    HideForm: boolean;
+    myVar: boolean;
+    checkvalue: boolean;
+    ShowInvalidLogin: boolean;
+    constructor(
+        private translate: TranslateService,
+        public router: Router, private formBuilder: FormBuilder,  private authService: AuthenticationService
+        ) {
+            this.translate.addLangs(['en', 'fr', 'ur', 'es', 'it', 'fa', 'de', 'zh-CHS']);
+            this.translate.setDefaultLang('en');
+            const browserLang = this.translate.getBrowserLang();
+            this.translate.use(browserLang.match(/en|fr|ur|es|it|fa|de|zh-CHS/) ? browserLang : 'en');
+    }
 
     ngOnInit() {
         this.loginForm = this.formBuilder.group({

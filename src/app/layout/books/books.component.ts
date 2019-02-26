@@ -64,6 +64,7 @@ export class BooksComponent implements OnInit {
           }
 
         deleteBook(book: Isbn) {
+          if (window.confirm('Do u want to delete?')) {
           this.bookservice.deleteBook(book).subscribe(
             data => {
               if (data) {
@@ -73,6 +74,7 @@ export class BooksComponent implements OnInit {
               this.dataSource = new MatTableDataSource(this.books);
               }}},
               error => {console.log(error); });
+            }
           }
           editBook(book: Isbn) {
             book.Description = 'check edit';
@@ -83,6 +85,8 @@ export class BooksComponent implements OnInit {
               error => {console.log(error); });
           }
           backToBook(book: Isbn) {
-            this.showIsbn = false;
+            if (window.confirm('Do u want to delete?')) {
+
+            }
           }
 }
