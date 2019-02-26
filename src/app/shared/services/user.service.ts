@@ -18,7 +18,7 @@ export class UserService {
 
   private deleteUserURI = 'https://librarymanagement20190208054654.azurewebsites.net/api/user/DeleteUser';
   private usersURI = 'https://librarymanagement20190208054654.azurewebsites.net/api/user';
-  
+  private editUserURI = 'https://librarymanagement20190208054654.azurewebsites.net/api/user';
   private handleError;
   
   constructor(private http: HttpClient) { }
@@ -42,7 +42,21 @@ export class UserService {
               return true;
                       }));
     }
-
+    editUser(user: User, fileToUpload: File): any {
+      const formData: FormData = new FormData();
+      if (fileToUpload !== null) {
+      formData.append('fileKey', fileToUpload, fileToUpload.name);
+      }
+      formData.append('model', JSON.stringify(user));
+      console.log('edituser' + fileToUpload, fileToUpload.name, JSON.stringify(user));
+      return this.http.post(this.editUserURI, formData).pipe(
+        map((res: Response) => {
+          if (res !== null) {
+            return res;
+          }
+          return false;
+      }));
+    }
     changePassword(login : Login)
     {
       let getHeaders = new HttpHeaders({
