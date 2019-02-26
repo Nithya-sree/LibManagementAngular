@@ -12,8 +12,8 @@ export class SidebarComponent implements OnInit {
     collapsed: boolean;
     showMenu: string;
     pushRightClass: string;
-    roleType : boolean;
-    UserName : string;
+    roleType: boolean;
+    UserName: string;
 
     @Output() collapsedEvent = new EventEmitter<boolean>();
 
@@ -39,8 +39,11 @@ export class SidebarComponent implements OnInit {
         this.collapsed = false;
         this.showMenu = '';
         this.pushRightClass = 'push-right';
-        this.roleType = JSON.parse(localStorage.getItem('currentUser')).RoleType === 0 ? true : false;
-        this.UserName =  JSON.parse(localStorage.getItem('currentUser')).UserName;
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        if (currentUser !== null) {
+        this.roleType = currentUser.RoleType === 0 ? true : false;
+        this.UserName =  currentUser.UserName;
+        }
     }
 
 
@@ -81,7 +84,7 @@ export class SidebarComponent implements OnInit {
     }
 
     onLoggedout() {
-        //localStorage.removeItem('isLoggedin');
+        // localStorage.removeItem('isLoggedin');
         localStorage.removeItem('accessToken');
     }
 }

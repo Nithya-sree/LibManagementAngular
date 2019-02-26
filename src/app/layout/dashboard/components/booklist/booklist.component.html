@@ -1,7 +1,4 @@
 <div class="search-div">
-    <button mat-raised-button (click)="CreateBook()" *ngIf="!roleType">
-      <mat-icon>add</mat-icon>create
-    </button>
     <mat-form-field class="search-form-field" floatLabel="never">
       <input matInput [(ngModel)]="searchKey" placeholder="search" autocomplete="off"  (keyup)="applyFilter($event.target.value)">
       <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="onSearchClear()" *ngIf="searchKey">
@@ -28,10 +25,6 @@
            <mat-header-cell *matHeaderCellDef  class="headerCell">Name</mat-header-cell> 
           <mat-cell *matCellDef="let element">{{element.Name}}</mat-cell>
         </ng-container>
-        <ng-container matColumnDef="Author">
-             <mat-header-cell *matHeaderCellDef class="headerCell">Author</mat-header-cell> 
-            <mat-cell *matCellDef="let element">{{element.Author}}</mat-cell>
-          </ng-container>
           <ng-container matColumnDef="AvailableCopies">
                <mat-header-cell *matHeaderCellDef class="headerCell">Description</mat-header-cell> 
               <mat-cell *matCellDef="let element">{{element.AvailableCopies}}</mat-cell>
@@ -40,7 +33,7 @@
                  <mat-header-cell *matHeaderCellDef class="headerCell">Available</mat-header-cell> 
                 <mat-cell *matCellDef="let element">{{element.NumberOfCopies}}</mat-cell>
               </ng-container>
-              <ng-container matColumnDef="edit">
+              <!-- <ng-container matColumnDef="edit">
                   <mat-header-cell  *matHeaderCellDef class="headerCell"> edit </mat-header-cell>
                   <mat-cell *matCellDef="let element" >
                     <mat-icon color="warn" (click)="editBook(element)">edit</mat-icon>
@@ -51,7 +44,7 @@
                 <mat-cell *matCellDef="let element" >
                   <mat-icon color="warn" (click)="deleteBook(element)">delete</mat-icon>
                 </mat-cell>
-            </ng-container> 
+            </ng-container>  -->
               <ng-container matColumnDef="loading">
                 <mat-footer-cell *matFooterCellDef colspan="6">
                   Loading data...

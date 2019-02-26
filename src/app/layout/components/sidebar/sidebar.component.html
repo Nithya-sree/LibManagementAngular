@@ -25,7 +25,7 @@
             <i class="fa fa-fw fa-dashboard"></i>&nbsp;
             <span>{{ 'Dashboard' | translate }}</span>
         </a>
-        <a routerLink="/user-details" [routerLinkActive]="['router-link-active']" class="list-group-item">
+        <a routerLink="/user-details" [routerLinkActive]="['router-link-active']" class="list-group-item" *ngIf="!roleType">
             <i class="fa fa-fw fa-user"></i>&nbsp;
             <span>{{ 'User Details' | translate }}</span>
         </a>

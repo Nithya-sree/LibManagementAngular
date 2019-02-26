@@ -31,8 +31,11 @@ export class HeaderComponent implements OnInit {
 
     ngOnInit() {
         this.pushRightClass = 'push-right';
-        this.UserName =  JSON.parse(localStorage.getItem('currentUser')).UserName;
-        this.roleType = JSON.parse(localStorage.getItem('currentUser')).RoleType === 0 ? true : false;
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        if (currentUser !== null) {
+        this.UserName =  currentUser.UserName;
+        this.roleType = currentUser.RoleType === 0 ? true : false;
+        }
     }
 
     isToggled(): boolean {
@@ -51,9 +54,10 @@ export class HeaderComponent implements OnInit {
     }
 
     onLoggedout() {
-        //localStorage.removeItem('isLoggedin');
+        // localStorage.removeItem('isLoggedin');
         localStorage.removeItem('accessToken');
-        
+        localStorage.clear();
+
     }
 
     changeLang(language: string) {

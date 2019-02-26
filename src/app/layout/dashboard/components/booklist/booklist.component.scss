@@ -22,9 +22,12 @@ table {
       justify-content: center;
       font-style: italic;
   }
-
+  #wrapper {
+    display:table;
+  }
    .search-div{
     margin : 5px;
+    display:table-row;
     }
     .search-form-field{
     width: 350px;
