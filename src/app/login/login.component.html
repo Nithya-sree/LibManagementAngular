@@ -2,7 +2,7 @@
 
 <div class="login-page" [@routerTransition]>
     <div class="form">
-    <form [formGroup]="loginForm" (submit)="onSubmit()" >
+    <form [formGroup]="loginForm" (submit)="onLoggedin()" >
         <!-- //(ngSubmit)="onSubmit()" -->
         <div class="form-group">
           <mat-form-field class="example-full-width">
