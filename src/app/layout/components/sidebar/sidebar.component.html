@@ -37,6 +37,10 @@
             <i class="fa fa-fw fa-book"></i>&nbsp;
             <span>{{ 'Books' | translate }}</span>
         </a>
+        <a routerLink="/changePassword" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-key"></i>&nbsp;
+            <span>{{ 'Change Password' | translate }}</span>
+        </a>
         <a [routerLink]="['/charts']" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-fw fa-bar-chart-o"></i>&nbsp;
             <span>{{ 'Charts' | translate }}</span>
