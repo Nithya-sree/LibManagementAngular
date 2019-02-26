@@ -17,7 +17,7 @@ export class UserService {
 
   private deleteUserURI = 'https://librarymanagement20190208054654.azurewebsites.net/api/user/DeleteUser';
   private getUsersURI = 'https://librarymanagement20190208054654.azurewebsites.net/api/user';
-  private editUserURI = 'https://librarymanagement20190208054654.azurewebsites.net/api/user';
+  private editUserURI = 'https://librarymanagement20190208054654.azurewebsites.net/api/user/UpdateUser';
   private handleError;
   login;
   constructor(private http: HttpClient) { }
