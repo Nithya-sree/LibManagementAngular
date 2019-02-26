@@ -10,6 +10,8 @@ import { routerTransition } from '../../router.animations';
 export class DashboardComponent implements OnInit {
     public alerts: Array<any> = [];
     public sliders: Array<any> = [];
+    roleType: boolean;
+    UserName: any;
 
     constructor() {
         this.sliders.push(
@@ -52,7 +54,13 @@ export class DashboardComponent implements OnInit {
         );
     }
 
-    ngOnInit() {}
+    ngOnInit() {
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        if (currentUser !== null) {
+        this.roleType = currentUser.RoleType === 0 ? true : false;
+        this.UserName =  currentUser.UserName;
+        }
+    }
 
     public closeAlert(alert: any) {
         const index: number = this.alerts.indexOf(alert);

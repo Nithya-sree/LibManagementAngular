@@ -9,6 +9,8 @@ import { Book } from '../../model/book.model';
 import { Isbn } from '../../model/isbn.model';
 import { errorHandler } from '@angular/platform-browser/src/browser';
 import { makeParamDecorator } from '@angular/core/src/util/decorators';
+import { IssueBooks } from 'src/app/model/issueBooks';
+import { User } from 'src/app/model/user.model';
 
 @Injectable()
 export class BookService {
@@ -23,6 +25,7 @@ export class BookService {
   private addISBN = 'https://librarymanagement20190208054654.azurewebsites.net/api/Books/AddISBNDetails';
   private getAllIsbnURI = 'https://librarymanagement20190208054654.azurewebsites.net/api/Books/GetAllIsbnDetails';
   private editBooks = 'https://librarymanagement20190208054654.azurewebsites.net/api/Books/EditBook';
+  private issuedBooks = 'https://librarymanagement20190208054654.azurewebsites.net/api/User/GetAllBooksByUserId';
   private handleError;
     isbnDetails;
 
@@ -86,6 +89,13 @@ export class BookService {
         tap(data => console.log('All: ' + JSON.stringify(data))),
         catchError(this.handleError)
       );
+    }
+
+    GetIssuedBooks(userDetails: User): any {
+      return this.http.post(this.issuedBooks, userDetails).pipe(
+        map((res: Response) => {
+            return res;
+      }));
     }
 
 }

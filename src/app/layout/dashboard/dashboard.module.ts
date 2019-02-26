@@ -17,12 +17,13 @@ import { BookService } from 'src/app/shared/services/book.service';
 import { ConfigurationService } from 'src/app/shared/services/configurationService';
 import { AuthenticationService } from 'src/app/shared/services/authenticationService';
 import { UserService } from 'src/app/shared/services/user.service';
+import { IssuedBookListComponent } from './components/userIssuedBookList/issuedBookList.component';
 
 @NgModule({
     imports: [
         CommonModule,
-        NgbCarouselModule,FormsModule,MatPaginatorModule,MatButtonModule,
-        NgbAlertModule,MatIconModule,MatTableModule,MatFormFieldModule,MatInputModule,
+        NgbCarouselModule, FormsModule, MatPaginatorModule, MatButtonModule,
+        NgbAlertModule, MatIconModule, MatTableModule, MatFormFieldModule, MatInputModule,
         DashboardRoutingModule,
         StatModule
     ],
@@ -30,8 +31,8 @@ import { UserService } from 'src/app/shared/services/user.service';
         DashboardComponent,
         TimelineComponent,
         NotificationComponent,
-        ChatComponent,BookListComponent
+        ChatComponent, BookListComponent, IssuedBookListComponent
     ],
-    providers:[BookService,ConfigurationService,AuthenticationService,UserService]
+    providers: [ BookService, ConfigurationService, AuthenticationService, UserService]
 })
 export class DashboardModule {}
