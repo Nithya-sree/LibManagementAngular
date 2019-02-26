@@ -10,8 +10,7 @@ import {Login} from '../../model/login.model';
     providedIn: 'root'
 })
 export class AuthenticationService {
-private handleError;
-    xyz = new Subject<boolean>();
+
 
     constructor(private http: HttpClient, private router: Router) {
      }

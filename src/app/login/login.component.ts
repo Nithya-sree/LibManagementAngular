@@ -44,18 +44,23 @@ export class LoginComponent implements OnInit {
         }
         this.authService.login(this.loginForm.value).subscribe(
           details => {
-            if (details === true) {
+            if(details == true)
+            {
+              localStorage.removeItem('currentUser');
               this.ShowInvalidLogin = false;
               this.authService.GetCurrentUser().subscribe(
                 data => {
-                  const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-                  if (data && currentUser !== null) {
-                  this.router.navigate(['/dashboard']);
-                  }
-                }, error  => {
-                  console.log('Error', error); }
-              );
-            } else {
+                    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+                    if (data && currentUser !== null) {
+                  this.router.navigate(['/dashboard']);}
+                },
+                error  => {
+                    console.log("Error", error);
+                    }
+              )
+            }
+            else
+            {
               this.ShowInvalidLogin = true;
             }
           },

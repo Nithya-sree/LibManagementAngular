@@ -4,6 +4,7 @@ import { HttpClient, HttpErrorResponse, HttpResponse, HttpEvent, HttpHeaders }  
 //// import 'rxjs/add/observable/throw';
 import {Observable} from 'rxjs';
 import {tap, catchError, map} from 'rxjs/operators';
+
 import { Book } from '../../model/book.model';
 import { User } from '../../model/user.model';
 import { Login } from '../../model/login.model';
@@ -15,12 +16,14 @@ import { LoginComponent } from 'src/app/login/login.component';
 @Injectable()
 export class UserService {
 
+  constructor(private http: HttpClient) { }
+
   private deleteUserURI = 'https://librarymanagement20190208054654.azurewebsites.net/api/user/DeleteUser';
   private getUsersURI = 'https://librarymanagement20190208054654.azurewebsites.net/api/user';
   private editUserURI = 'https://librarymanagement20190208054654.azurewebsites.net/api/user/UpdateUser';
+  private changePasswordURI = 'https://librarymanagement20190208054654.azurewebsites.net/api/Registration/ChangePassword';
   private handleError;
-  login;
-  constructor(private http: HttpClient) { }
+    login;
 
     getUsersDetails(): Observable<User[]> {
       return this.http.get<User[]>(this.getUsersURI).pipe(
@@ -55,13 +58,13 @@ export class UserService {
       }));
     }
     changePassword(login: Login) {
-const getHeaders = new HttpHeaders({
-'Content-Type': 'application/json',
-});
-return this.http.post('https://librarymanagement20190208054654.azurewebsites.net/api/Registration/ChangePassword', login, { headers: getHeaders })
-.pipe(map(res => {
-return true;
-}));
-}
+      const getHeaders = new HttpHeaders({
+        'Content-Type': 'application/json',
+    });
+    return this.http.post(this.changePasswordURI, login, { headers: getHeaders })
+    .pipe(map(res => {
+    return true;
+    }));
+    }
 
 }
