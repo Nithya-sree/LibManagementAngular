@@ -14,6 +14,7 @@ export class SidebarComponent implements OnInit {
     pushRightClass: string;
     roleType: boolean;
     UserName: string;
+    userNameFirstChar: string;
 
     @Output() collapsedEvent = new EventEmitter<boolean>();
 
@@ -41,6 +42,7 @@ export class SidebarComponent implements OnInit {
         this.pushRightClass = 'push-right';
         const currentUser = JSON.parse(localStorage.getItem('currentUser'));
         if (currentUser !== null) {
+        this.userNameFirstChar = currentUser.UserName.charAt(0);
         this.roleType = currentUser.RoleType === 0 ? true : false;
         this.UserName =  currentUser.UserName;
         }

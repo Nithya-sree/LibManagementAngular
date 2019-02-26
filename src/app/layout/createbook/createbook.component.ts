@@ -4,8 +4,8 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 import { Router } from '@angular/router';
 import { MatDialogRef } from '@angular/material';
 import { BookService} from '../../shared/services/book.service';
-import{Book} from "../../model/book.model";
-import{Isbn} from "../../model/isbn.model";
+import { Book} from '../../model/book.model';
+import { Isbn} from '../../model/isbn.model';
 import { take, takeUntil } from 'rxjs/operators';
 import { ReplaySubject, Subject } from 'rxjs';
 import { MatSelect } from '@angular/material';
@@ -21,14 +21,14 @@ export class CreateBookComponent implements OnInit, AfterViewInit, OnDestroy {
 submit = false;
 isNewBookAdded = true;
 isIncreasedBooks = false;
-isImageUploaded =false;
-CreateNewBook:FormGroup;
-AddToExistingBooks:FormGroup;
-books : Book[] = [];
-ISBN : FormGroup;
-url :any;
-errorMessage : string;
-fileToUpload : File = null;
+isImageUploaded = false;
+CreateNewBook: FormGroup;
+AddToExistingBooks: FormGroup;
+books: Book[] = [];
+ISBN: FormGroup;
+url: any;
+errorMessage: string;
+fileToUpload: File = null;
 imageUrl: string;
 
 stopSubmitOnClose = false;
@@ -38,7 +38,7 @@ protected _onDestroy = new Subject<void>();
 public filteredBanks: ReplaySubject<Book[]> = new ReplaySubject<Book[]>(1);
 @ViewChild('singleSelect') singleSelect: MatSelect;
 selectedBook: any;
-  constructor(private formBuilder:FormBuilder,private router:Router,private bookService: BookService) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private bookService: BookService) { }
 
 getBookData() {
   const elementId = [];

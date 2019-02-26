@@ -15,7 +15,7 @@
                 </div>
                 <a class="list-group-item" *ngIf="collapsed">
                         <div class="circle">
-                                <label>N</label>
+                                <label>{{userNameFirstChar}}</label>
                               </div>
                         <!-- <img class="smallimg" src="https://librarymanagement.blob.core.windows.net/blobs/img_fjords.jpg" width="25" height="25"> -->
                     <!-- <i class="fa fa-fw fa-user"></i>&nbsp;
@@ -40,6 +40,14 @@
         <a routerLink="/changePassword" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-fw fa-key"></i>&nbsp;
             <span>{{ 'Change Password' | translate }}</span>
+        </a>
+        <a routerLink="/profileDetails" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-user"></i>&nbsp;
+            <span>{{ 'Profile' | translate }}</span>
+        </a>
+        <a routerLink="/issuingBooks" [routerLinkActive]="['router-link-active']" class="list-group-item" *ngIf="!roleType">
+            <i class="fa fa-fw fa-user"></i>&nbsp;
+            <span>{{ 'Books for issue' | translate }}</span>
         </a>
         <a [routerLink]="['/charts']" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-fw fa-bar-chart-o"></i>&nbsp;
