@@ -5,7 +5,7 @@
     <form [formGroup]="loginForm" (submit)="onLoggedin()" >
         <!-- //(ngSubmit)="onSubmit()" -->
         <div class="form-group">
-          <mat-form-field class="example-full-width">
+          <mat-form-field class="example-full-width" >
               <input matInput placeholder="UserName" formControlName="UserName">
               <mat-error>This field is mandatory.</mat-error>
             </mat-form-field>
@@ -20,7 +20,7 @@
         <p class="message">Already registered? <a class="btn rounded-btn" [routerLink]="['/signup']">{{ 'Register' | translate }}</a>
         <!-- <a (click)=CreateBook()>createbook</a> -->
       </form>
-      <span *ngIf="ShowInvalidLogin">Invalid Credentials</span>
+      <span *ngIf="ShowInvalidLogin" style="color:red">Invalid Credentials</span>
       </div>
   </div>
   

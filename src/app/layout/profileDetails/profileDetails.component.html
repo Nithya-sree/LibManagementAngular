@@ -1,68 +1,61 @@
-<div id="booksData" >
-    <form [formGroup]="userDetails" (submit)="editUserDetails(Image)"  class="form-inline" >
-          <div class=col-md-4>
-              <div class="form-group">
-                  <label for="FirstName">First Name</label>
-                  <input type="text"  class="form-control" formControlName="FirstName" />
-                </div>
-          </div>
-          <div class="col-md-4"> 
-              <div class="formGroup"> 
-                <input type="file" #Image accept="image/*" (change)="uploadImage($event.target.files)" id=image>
-                <img [src]="url" height="100" > <br/>
-                </div>
-          </div>
-          <div class=col-md-5>
-              <div class="form-group">
-                  <label for="MiddleName">Middle Name</label>
-                  <input type="text" class="form-control" formControlName="MiddleName" />
-                </div>
-          </div>
-          <div class=col-md-7>
-              <div class="form-group">
-                  <label for="LastName">Last Name </label>
-                  <input type="text"  class="form-control" formControlName="LastName" />
-                </div>
-          </div>
-          <div class=col-md-5>
-            <div class="form-group">
-                <label for="UserName">User Name</label>
-                <input type="text" class="form-control" formControlName="UserName" />
-              </div>
-        </div>
-        <div class=col-md-7>
-            <div class="form-group">
-                <label for="DateOfBirth">Date Of Birth</label>
-                <input type="date"  class="form-control" placeholder="yyyy-mm-dd" formControlName="DateOfBirth" />
-              </div>
-        </div>
-        <div class=col-md-7>
-          <div class="form-group">
-              <label for="Email">Email </label>
-              <input type="text"  class="form-control" formControlName="Email" />
+<div class="login-page">
+        <div class="form">
+          <form [formGroup]="userDetails" (submit)="editUserDetails(Image)"  class="form-inline">
+            <div class="row">
+            <div class="col-md-4">
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="First Name" formControlName="FirstName" >
+                  </mat-form-field>
             </div>
+            <div class="col-md-4" >
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Middle Name" formControlName="MiddleName" >
+                  </mat-form-field>
+          </div>
+            <div class="col-md-4" >
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Last Name" formControlName="LastName" >
+                    </mat-form-field>
+              </div>
+            
+            <div class="col-md-4" >
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="User Name" formControlName="UserName" readonly=true disabled=true >
+                  </mat-form-field>
+            </div>
+                    <div class="col-md-4" >
+                       <mat-form-field class="example-full-width">
+                           <input matInput  [matDatepicker]="picker" placeholder="Select DOB" formControlName="DateOfBirth">
+                           <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
+                           <mat-datepicker #picker></mat-datepicker>
+                         </mat-form-field>
+                    </div>
+                      <div class="col-md-4" >
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Email" formControlName="Email" readonly=true disabled=true >
+                              </mat-form-field>
+                        </div>
+                       
+            <div class="col-md-4" >
+              <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Phone Number" formControlName="PhoneNumber" >
+                </mat-form-field>
+          </div>
+                     <div class="col-md-4"> 
+                  <input type="file" (change)="UploadImage($event)" id=image style="margin:20px">
+                  <img [src]="url" height="100" *ngIf="isImageUploaded" > <br/>
+                  </div>
+                
+          <!-- <div class="col-md-3" class="form-group">   </div> -->
+            <div  class="col-md-12">
+                  <button [disabled]="loading" style="margin: 10px; float: right;" mat-raised-button color="primary">Save</button>
+                  <button mat-raised-button color="warn" (click)="onClose()" tabIndex="-1" style="margin: 10px; float:right">cancel</button>
+                </div>
+            <button mat-raised-button (click)="openDialog()">Pick one</button>
+          </div>
+          </form>
+        </div>
       </div>
-      <div class=col-md-5>
-        <div class="form-group">
-            <label for="RoleType">Role Type</label>
-            <input type="text" class="form-control" formControlName="RoleType" />
-          </div>
-    </div>
-    <div class=col-md-7>
-        <div class="form-group">
-            <label for="PhoneNumber">Phone Number</label>
-            <input type="text"  class="form-control" formControlName="PhoneNumber" />
-          </div>
-    </div>
-    <div class=col-md-7>
-        <div class="form-group">
-            <label for="Gender">Gender</label>
-            <input type="text"  class="form-control" formControlName="Gender" />
-          </div>
-    </div>
-          <div class=col-md-3>
-              <button  mat-raised-button color="warn" tabIndex="-1" style="margin: 10px;" (click)='onCancel()'>cancel</button >
-              <button  mat-raised-button color="primary">Update</button >
-          </div>
-    </form>
-</div>
+      
+      
+      

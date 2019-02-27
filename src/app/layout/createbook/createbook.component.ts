@@ -175,13 +175,17 @@ getBookData() {
   LoginPage() {
     this.router.navigate(['/login']);
   }
-  uploadImage(file: FileList) {
-    this.fileToUpload = file.item(0);
-    const reader = new FileReader();
-    reader.onload = (event: any) => {
-      this.imageUrl = event.target.result;
-    };
-    reader.readAsDataURL(this.fileToUpload);
+  uploadImage(event) {
+    this.isImageUploaded=true;
+        if (event.target.files && event.target.files[0]) {
+          var reader = new FileReader();
+        reader.onload = (event: ProgressEvent) => {
+          this.url = (<FileReader>event.target).result;
+        }
+    
+        reader.readAsDataURL(event.target.files[0]);
+      }
+        console.log(event);
   }
   protected filterBanks() {
     if (!this.books) {
