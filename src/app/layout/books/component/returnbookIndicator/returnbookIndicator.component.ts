@@ -14,9 +14,6 @@ import{BookService} from '../../../../shared/services/book.service';
 export class ReturnBookIndicatorComponent implements OnInit {
   private chart: any;
   private bookObj:any;
-  private countDownDate:any;
-  private showIndicator: Boolean= false;
- private msPerDay = 1000 * 60 * 60 * 24;
    //,private confirmationDialogService: ConfirmationDialogService
    constructor( private amCharts:AmChartsService,private bookservice:BookService) 
     {
@@ -71,19 +68,14 @@ export class ReturnBookIndicatorComponent implements OnInit {
               "color": "#696969	",
           }]
         });
+        this.createChart();
   }
-  ngAfterViewInit() {
-    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-   this.createChart();
-  }
-  
-  
    createChart()
    { 
     this.bookObj={
         "BookID": null,
         "ISBNNumber": "34234",
-        "ReturnDate": "2019-02-28T02:57:45.157Z",
+        "ReturnDate": "2/28/2019, 12:42:21 PM",
         "IssuedOn": "2019-02-22T09:57:45.157Z",
         "Name": "Java Programming",
         "Author": "Joshua Bloch",
@@ -99,19 +91,23 @@ export class ReturnBookIndicatorComponent implements OnInit {
           var now = new Date().getTime();
            var countDownDate = new Date(this.bookObj.ReturnDate).getTime();
           var distance = countDownDate - now;
-          var hours = Math.floor(distance / (1000 * 60 * 60));
+          var hours = Math.floor((distance % (1000 * 60 * 60 *24)) / (1000 * 60 * 60));
           var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
           var seconds = Math.floor((distance % (1000 * 60)) / 1000);
           var displayTime = hours + ":" + minutes + ":" + seconds+"\n" +this.bookObj.Name;
-          if (hours < 0) {
-             var displayMsg = "Time Expired";
-              return;
+          if (hours >0) {
+            this.chart.arrows[0].setValue(hours);
+            this.chart.axes[0].setTopText(displayTime);
+            this.chart.axes[0].bands[1].setEndValue(hours);
+            this.chart.axes[0].bands[0].balloonText=hours +" hours left";
+            this.chart.axes[0].bands[1].balloonText= 24 -hours +" hours elapsed";
           }
-          this.chart.arrows[0].setValue(hours);
-          this.chart.axes[0].setTopText(displayTime);
-          this.chart.axes[0].bands[1].setEndValue(hours);
-          this.chart.axes[0].bands[0].balloonText=hours +" hours left";
-          this.chart.axes[0].bands[1].balloonText= 24 -hours +" hours elapsed";
+         else{
+          this.chart.arrows[0].setValue(0);
+          this.chart.axes[0].setTopText("Time Expired");
+          this.chart.axes[0].bands[1].setEndValue(0);
+          this.chart.axes[0].bands[1].balloonText= " hours elapsed";
+         }
         });   
        },1000);
               

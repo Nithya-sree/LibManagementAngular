@@ -69,7 +69,9 @@
     <mat-footer-row *matFooterRowDef="['nodata']" [ngClass]="{'hide':!(dataSource!=null && dataSource.data.length==0)}"></mat-footer-row>
       </mat-table>
     </div> 
-
+    <div>
+      <app-returnbookIndicator *ngIf="roleType"></app-returnbookIndicator>
+    </div>
     <h2>{{ excessLimitMsg }}</h2>
 
 
