@@ -1,139 +1,143 @@
 <div>
-    <div class="custom-control custom-radio custom-control-inline">
-        <input type="radio" class="custom-control-input" id="defaultInline1" name="Books" value=""(click)="AddNew()" checked="checked">
-        <label class="custom-control-label" for="defaultInline1">Add New</label>
-      </div>
-      <div class="custom-control custom-radio custom-control-inline">
-        <input type="radio" class="custom-control-input" id="defaultInline2" name="Books" (click)="AddExisting()">
-        <label class="custom-control-label" for="defaultInline2">Add Existing</label>
-      </div>
-      <!-- <div style="float: right;">
-          <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="onClose()" >
-              <mat-icon>close</mat-icon>
-            </button>
-      </div> -->
+  <div class="custom-control custom-radio custom-control-inline">
+    <input type="radio" class="custom-control-input" id="defaultInline1" name="Books" value="" (click)="AddNew()"
+      checked="checked">
+    <label class="custom-control-label" for="defaultInline1">Add New</label>
+  </div>
+  <div class="custom-control custom-radio custom-control-inline">
+    <input type="radio" class="custom-control-input" id="defaultInline2" name="Books" (click)="AddExisting()">
+    <label class="custom-control-label" for="defaultInline2">Add Existing</label>
+  </div>
 </div>
-<div *ngIf="isNewBookAdded" id="booksData" >
-    <form [formGroup]="CreateNewBook" (submit)="onSubmit(Image)"  class="form-inline" >
-          <div class=col-md-4>
-              <div class="form-group">
-                  <label for="Name">Book Name</label>
-                  <input type="text"  class="form-control" formControlName="Name" />
-                </div>
-          </div>
-          <div class="col-md-4"> 
-              <div class="formGroup"> 
-                <input type="file" #Image accept="image/*" (change)="uploadImage($event.target.files)" id=image>
-                <img [src]="url" height="100" *ngIf="isImageUploaded" > <br/>
-                </div>
-          </div>
-          <div formArrayName="ISBNNumber"> 
-            <div formGroupName="0">
-          <div class=col-md-5>
-              <div class="form-group">
-                  <label for="id">ISBN Number</label>
-                  <input type="text" class="form-control" formControlName="TrackNo" />
-                </div>
-          </div>
-          <div class=col-md-7>
-              <div class="form-group">
-                  <label for="Edition">Edition </label>
-                  <input type="text"  class="form-control" formControlName="Edition" />
-                </div>
-          </div>
-          <div class=col-md-5>
-            <div class="form-group">
-                <label for="Author">Author</label>
-                <input type="text" class="form-control" formControlName="Author" />
-              </div>
+
+<!-- New book form -->
+<div *ngIf="isNewBookAdded" class="login-page">
+  <div class="form">
+    <form [formGroup]="CreateNewBook" (submit)="onSubmit(Image)" class="form-inline">
+      <div class="row">
+        <div class="col-md-4">
+          <mat-form-field class="example-full-width" >
+            <input matInput placeholder="Book Name" formControlName="Name">
+          </mat-form-field>
         </div>
-        <div class=col-md-7>
-            <div class="form-group">
-                <label for="PublishingYear">Publish Year </label>
-                <input type="date"  class="form-control" placeholder="yyyy-mm-dd" formControlName="PublishingYear" />
-              </div>
-        </div>
-        <div class=col-md-7>
-          <div class="form-group">
-              <label for="Description">Description </label>
-              <input type="text"  class="form-control" formControlName="Description" />
+
+        <ng-container formArrayName="ISBNNumber">
+          <ng-container formGroupName="0">
+            <div class=col-md-4>
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="ISBN Number" formControlName="TrackNo">
+              </mat-form-field>
             </div>
-      </div>
+            <div class=col-md-4>
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Edition" formControlName="Edition">
+              </mat-form-field>
+    
+            </div>
+            <div class=col-md-4>
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Author" formControlName="Author">
+              </mat-form-field>
+   
+            </div>
+            <div class=col-md-4>
+              <mat-form-field class="example-full-width">
+                <input matInput [matDatepicker]="picker" placeholder="Publish Year" formControlName="PublishingYear">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            </div>
+            <div class="col-md-4">
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Description" formControlName="Description">
+              </mat-form-field>
+            </div>
+            <div class="col-md-4">
+              <div class="formGroup">
+                <input type="file" #Image accept="image/*" (change)="uploadImage($event)" id=image formControlName="Image">
+                <img [src]="url" height="100" *ngIf="isImageUploaded"  style="margin:10px"> <br />
+              </div>
+            </div>
+          </ng-container>
+        </ng-container>
+
+        <div class="col-md-12">
+          <button mat-raised-button color="primary" style="margin: 10px; float:right">Add</button>
+          <button mat-raised-button color="warn" (click)="onClose()" tabIndex="-1" style="margin: 10px; float:right">cancel</button>
 
         </div>
       </div>
-          <!-- <div class=col-md-4>
-              <div class="form-group">
-                    <label for="PublishingYear"> Published Year</label>
-                    <input type="date"  class="form-control" placeholder="yyyy-mm-dd" formControlName="PublishingYear">
-                </div>
-          </div> -->
-          <div class="col-md-6"> 
-          </div>
-          <div class="col-md-3"></div>
-          <div class=col-md-3>
-              <button  mat-raised-button color="warn" (click)="onClose()" tabIndex="-1" style="margin: 10px;">cancel</button >
-              <button  mat-raised-button color="primary">Add</button >
-          </div>
+
     </form>
+  </div>
 </div>
+
+
+
 <!-- style= "display:inline-block;" -->
-<div *ngIf="isIncreasedBooks" id="booksData" >
-    <div>
-        <mat-form-field>
-            <mat-select placeholder="Select any..." [(value)]="selectedBook" [formControl]="bankCtrl">
-              <div>
-                  <mat-option>
+<div *ngIf="isIncreasedBooks" class="login-page">
+  <div class="form">
+    <form [formGroup]="AddToExistingBooks" (submit)="onExistingSubmit()" class="form-inline">
+
+      <div class="row">
+          <div class="form-group" class="col-md-4">
+              <mat-form-field>
+                <mat-select placeholder="Select any..." [(value)]="selectedBook" [formControl]="bankCtrl">
+                  <div>
+                    <mat-option>
                       <ngx-mat-select-search [formControl]="bankFilterCtrl"></ngx-mat-select-search>
                     </mat-option>
-                <mat-option *ngFor="let book of filteredBanks | async" [value]="book.Id" >
-                    <img with="40" height="40" src="{{book.Image}}">
-                  {{book.Name}}
-                </mat-option>
-              </div>
-            </mat-select>
-          </mat-form-field>
-        </div>
- <form [formGroup]="AddToExistingBooks" (submit)="onExistingSubmit()"  class="form-inline">
-   <div class="col-md-4">
-   </div> 
-   <div formArrayName="ISBNNumber"> 
-      <div formGroupName="0">
-   <div class="col-md-4">
-   <div class="form-group">
-      <label for="id">ISBN Number</label>
-      <input type="text"  class="form-control" formControlName="TrackNo" />
-    </div>
-   </div>
-   <div class="col-md-4">
-  <div class="form-group">
-  <label for="Edition">Edition</label>
-  <input type="text"  class="form-control" formControlName="Edition" />
+                    <mat-option *ngFor="let book of filteredBanks | async" [value]="book.Id">
+                      <img with="40" height="40" src="{{book.Image}}">
+                      {{book.Name}}
+                    </mat-option>
+                  </div>
+                </mat-select>
+              </mat-form-field>
+            </div>
+              <ng-container formArrayName="ISBNNumber">
+                <ng-container formGroupName="0">
+                  <div class="col-md-4">
+                    <mat-form-field class="example-full-width">
+                      <input matInput placeholder="ISBN Number" formControlName="TrackNo">
+                    </mat-form-field>
+                  </div>
+                  <div class=col-md-4>
+                    <mat-form-field class="example-full-width">
+                      <input matInput placeholder="Edition" formControlName="Edition">
+                    </mat-form-field>
+                  </div>
+                  <div class=col-md-4>
+                    <mat-form-field class="example-full-width">
+                      <input matInput placeholder="Description" formControlName="Description">
+                    </mat-form-field>
+                  </div>
+                  <div class=col-md-4>
+                    <mat-form-field class="example-full-width">
+                      <input matInput placeholder="Author" formControlName="Author">
+                    </mat-form-field>
+                  </div>
+                  <div class=col-md-4>
+                    <mat-form-field class="example-full-width">
+                      <input matInput [matDatepicker]="picker" placeholder="Publish Year" formControlName="PublishingYear">
+                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                      <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="formGroup">
+                      <input type="file" #Image accept="image/*" (change)="uploadImage($event)" id=image>
+                      <img [src]="url" height="100" *ngIf="isImageUploaded" style="margin:10px"> <br />
+                    </div>
+                  </div>
+                </ng-container>
+              </ng-container>
+            <div class="col-md-12">
+              <button mat-raised-button color="primary" style="margin: 10px; float: right;">Add</button>
+              <button mat-raised-button color="warn" (click)="onClose()" tabIndex="-1" style="margin: 10px; float: right;">cancel</button>
+            </div>
+      </div>
+     
+    </form>
   </div>
-</div>
-<div class="col-md-4">
-  <div class="form-group">
-  <label for="Description">Description</label>
-  <input type="text"  class="form-control" formControlName="Description" />
-  </div>
-</div>
-<div class="col-md-4">
-  <div class="form-group">
-  <label for="Author">Author</label>
-  <input type="text"  class="form-control" formControlName="Author" />
-  </div>
-</div>
-<div class=col-md-7>
-  <div class="form-group">
-      <label for="PublishingYear">Publish Year</label>
-      <input type="date"  class="form-control" placeholder="yyyy-mm-dd" formControlName="PublishingYear" />
-    </div>
-</div>
-</div>
-</div>
-<div class="col-md-12">
-    <button  mat-raised-button color="primary" style="margin: 10px; float: right;">Add</button >
-      <button  mat-raised-button color="warn" (click)="onClose()" tabIndex="-1" style="margin: 10px; float: right;">cancel</button >
-</div>
-</form>
 </div>

@@ -37,15 +37,27 @@ export class ProfileDetailsComponent implements OnInit {
         }
     }
 
-    uploadImage(file: FileList) {
-        this.fileToUpload = file.item(0);
-        const reader = new FileReader();
-        reader.onload = (event: any) => {
-          this.imageUrl = event.target.result;
-        };
-        reader.readAsDataURL(this.fileToUpload);
+    // uploadImage(file: FileList) {
+    //     this.fileToUpload = file.item(0);
+    //     const reader = new FileReader();
+    //     reader.onload = (event: any) => {
+    //       this.imageUrl = event.target.result;
+    //     };
+    //     reader.readAsDataURL(this.fileToUpload);
+    //   }
+      UploadImage(event)
+      {
+        this.isImageUploaded=true;
+        if (event.target.files && event.target.files[0]) {
+          var reader = new FileReader();
+        reader.onload = (event: ProgressEvent) => {
+          this.url = (<FileReader>event.target).result;
+        }
+    
+        reader.readAsDataURL(event.target.files[0]);
       }
-
+        console.log(event);
+      }
     editUserDetails() {
 
         this.userService.editUser(this.userDetails.value, this.fileToUpload).subscribe(
@@ -56,5 +68,21 @@ export class ProfileDetailsComponent implements OnInit {
               error  => {
               console.log('Error', error);
               });
+    }
+
+    InitializeUserDetails()
+    {
+      this.userDetails.setValue({
+        FirstName:'',
+        LastName:'',
+        MiddleName:'',
+        DateOfBirth:'',
+        PhoneNumber:''
+      })
+      
+    }
+    onClose() {
+      this.userDetails.reset();
+      this.InitializeUserDetails();
     }
 }
