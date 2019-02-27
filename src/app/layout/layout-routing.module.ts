@@ -21,7 +21,8 @@ const routes: Routes = [
             { path: 'blank-page', loadChildren: './blank-page/blank-page.module#BlankPageModule' },
             { path: 'changePassword', loadChildren : './changePassword/changePassword.module#ChangePasswordModule'},
             { path: 'profileDetails', loadChildren : './profileDetails/profileDetails.module#ProfileDetailsModule'},
-            { path: 'issuingBooks', loadChildren : './issuingBooksList/issuingBooksList.module#IssuingBooksListModule'}
+            { path: 'issuingBooks', loadChildren : './issuingBooksList/issuingBooksList.module#IssuingBooksListModule'},
+            { path: 'returnBooks', loadChildren : './returnBookList/returnBookList.module#ReturnBookListModule'}
         ]
     }
 ];

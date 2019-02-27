@@ -3,7 +3,8 @@ export interface IssueBooks {
     ISBNNumber: string;
     ReturnDate: string;
     IssuedOn: string;
-    Name: string;
+    BookName: string;
     Author: string;
     Edition: string;
+    UserName: string;
 }

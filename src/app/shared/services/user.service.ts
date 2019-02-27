@@ -12,6 +12,7 @@ import { Isbn } from '../../model/isbn.model';
 import { errorHandler } from '@angular/platform-browser/src/browser';
 import { makeParamDecorator } from '@angular/core/src/util/decorators';
 import { LoginComponent } from 'src/app/login/login.component';
+import { IssueBooks } from 'src/app/model/issueBooks';
 
 @Injectable()
 export class UserService {
@@ -22,6 +23,11 @@ export class UserService {
   private getUsersURI = 'https://librarymanagement20190208054654.azurewebsites.net/api/user';
   private editUserURI = 'https://librarymanagement20190208054654.azurewebsites.net/api/user/UpdateUser';
   private changePasswordURI = 'https://librarymanagement20190208054654.azurewebsites.net/api/Registration/ChangePassword';
+  private getUserByIDURI = 'https://librarymanagement20190208054654.azurewebsites.net/api/user/GetUserById';
+  private blockedBooks = 'https://librarymanagement20190208054654.azurewebsites.net/api/Books/BlockBooks';
+  private BookIssueByAdmin = 'https://librarymanagement20190208054654.azurewebsites.net/api/Books/BlockBooks';
+  private BlockBooksByUser = 'https://librarymanagement20190208054654.azurewebsites.net/api/Books/BlockBooks';
+
   private handleError;
     login;
 
@@ -67,4 +73,35 @@ export class UserService {
     }));
     }
 
+    getUsersById(user: User): any {
+      return this.http.post(this.getUserByIDURI, user).pipe(
+        map((res: Response) => {
+          if (res !== null) {
+            return res;
+          }
+          return false;
+      }));
+    }
+
+    BlockBook(isbn: Isbn): any {
+       const blockedBook = {'BookID': isbn.BookID, 'UserName': '', 'BookName': isbn.BookName,
+       'Author': isbn.Author, 'ISBNNumber': isbn.TrackNo, 'Edition': isbn.Edition, 'PublishingYear': isbn.PublishingYear };
+      return this.http.post(this.BlockBooksByUser, blockedBook).pipe(
+        map((res: Response) => {
+          if (res !== null) {
+            return true;
+          }
+      }));
+    }
+
+    issueBook(issuedBook: IssueBooks): any {
+      // const blockedBook = {'BookID': isbn.BookID, 'UserName': '', 'BookName': isbn.BookName,
+      // 'Author': isbn.Author, 'ISBNNumber': isbn.TrackNo, 'Edition': isbn.Edition, 'PublishingYear': isbn.PublishingYear };
+      return this.http.post(this.BookIssueByAdmin, issuedBook).pipe(
+        map((res: Response) => {
+          if (res !== null) {
+            return true;
+          }
+      }));
+    }
 }
