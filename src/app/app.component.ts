@@ -8,7 +8,7 @@ import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 })
 export class AppComponent implements OnInit {
 
-    @HostListener('window:onunload ', ['$event'])
+    @HostListener('window:beforeunload ', ['$event'])
 
     doSomething($event: any) {
 

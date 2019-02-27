@@ -1,9 +1,9 @@
 export interface BlockBooks {
-    BookID : string;
-    UserID : string;
-    Name: string;
+    BookID: string;
+    UserName: string;
+    BookName: string;
     Author: string;
-    ISBNNumber : string;
-    Edition : string;
-    created : string;
+    ISBNNumber: string;
+    Edition: string;
+    PublishingYear: string;
 }

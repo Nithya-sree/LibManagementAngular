@@ -5,6 +5,7 @@ import {BookService} from '../../shared/services/book.service';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { User } from 'src/app/model/user.model';
 import { Isbn } from 'src/app/model/isbn.model';
+import { AdminConfiguration } from 'src/app/model/adminConfiguration.model';
 @Component({
     selector: 'app-tables',
     templateUrl: './books.component.html',
@@ -12,7 +13,7 @@ import { Isbn } from 'src/app/model/isbn.model';
     animations: [routerTransition()]
 })
 export class BooksComponent implements OnInit {
-    @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
   dataSource: MatTableDataSource<any>;
   isbnDataSource: MatTableDataSource<any>;
   searchKey: string;
@@ -28,12 +29,14 @@ export class BooksComponent implements OnInit {
   currentUser: User;
   result;
   checkval = false;
+  configValue: AdminConfiguration;
   showIsbn: boolean;
     constructor(private bookservice: BookService) {
 
     }
 
     ngOnInit() {
+          this.configValue = JSON.parse(localStorage.getItem('configValues'));
           this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
           if (this.currentUser !== null) {
           this.roleType = this.currentUser.RoleType === 0 ? true : false;
@@ -86,6 +89,13 @@ export class BooksComponent implements OnInit {
           }
           backToBook(book: Isbn) {
             if (window.confirm('Do u want to delete?')) {
+
+            }
+          }
+          BlockBook() {
+            if (this.configValue.BookBlockLimit > this.currentUser.BlockedCopies) {
+
+            } else {
 
             }
           }

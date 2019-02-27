@@ -11,6 +11,7 @@ import { errorHandler } from '@angular/platform-browser/src/browser';
 import { makeParamDecorator } from '@angular/core/src/util/decorators';
 import { IssueBooks } from 'src/app/model/issueBooks';
 import { User } from 'src/app/model/user.model';
+import { BlockBooks } from 'src/app/model/blockBooks';
 
 @Injectable()
 export class BookService {
@@ -18,14 +19,15 @@ export class BookService {
   constructor(private http: HttpClient) { }
 
   private GetAllBooks = 'https://librarymanagement20190208054654.azurewebsites.net/api/Books/GetAllBooks';
-  private booksURL = 'https://librarymanagement20190208054654.azurewebsites.net/api/Books';
-  /// private addBooksToExistingCategoryURL = 'https://librarymanagement20190208054654.azurewebsites.net/api/AddISBNDetails';
-  private GetAllAvailableBooks = 'https://librarymanagement20190208054654.azurewebsites.net/api/Books/GetAllAvailableBooks';
+  private booksURL = 'https://librarymanagement20190208054654.azurewebsites.net/api/Books'; private GetAllAvailableBooks = 'https://librarymanagement20190208054654.azurewebsites.net/api/Books/GetAllAvailableBooks';
   private serviceUrlForPost = 'https://librarymanagement20190208054654.azurewebsites.net/api/Books/AddNewCategoryBook';
   private addISBN = 'https://librarymanagement20190208054654.azurewebsites.net/api/Books/AddISBNDetails';
   private getAllIsbnURI = 'https://librarymanagement20190208054654.azurewebsites.net/api/Books/GetAllIsbnDetails';
   private editBooks = 'https://librarymanagement20190208054654.azurewebsites.net/api/Books/EditBook';
-  private issuedBooks = 'https://librarymanagement20190208054654.azurewebsites.net/api/User/GetAllBooksByUserId';
+  private getUserIssuedBooks = 'https://librarymanagement20190208054654.azurewebsites.net/api/User/GetAllBooksByUserId';
+  private getAllIssuedBooks = 'https://librarymanagement20190208054654.azurewebsites.net/api/User/GetAllIssuedBooks';
+  private getBlockedBooks = 'https://librarymanagement20190208054654.azurewebsites.net/api/Books/GetAllBlockedBooks';
+ 
   private handleError;
     isbnDetails;
 
@@ -92,10 +94,26 @@ export class BookService {
     }
 
     GetIssuedBooks(userDetails: User): any {
-      return this.http.post(this.issuedBooks, userDetails).pipe(
+      return this.http.post(this.getUserIssuedBooks, userDetails).pipe(
         map((res: Response) => {
             return res;
       }));
     }
+
+    GetAllIssuedBooks(): Observable<IssueBooks[]> {
+      return this.http.get<IssueBooks[]>(this.getAllIssuedBooks).pipe(
+        tap(data => console.log('All: ' + JSON.stringify(data))),
+        catchError(this.handleError)
+      );
+    }
+
+    GetAllBlockedBooks(): Observable<BlockBooks[]> {
+      return this.http.get<BlockBooks[]>(this.getBlockedBooks).pipe(
+        tap(data => console.log('All: ' + JSON.stringify(data))),
+        catchError(this.handleError)
+      );
+    }
+
+    
 
 }
