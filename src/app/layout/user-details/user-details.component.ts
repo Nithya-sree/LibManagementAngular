@@ -24,7 +24,7 @@ export class UserDetailsComponent implements OnInit {
         // private confirmationDialogService: ConfirmationPopupService
         ) {}
     ngOnInit() {
-        this.displayedColumns = [ 'UserName', 'Email', 'DateOfBirth', 'UserID', 'PhoneNumber', 'delete'];
+        this.displayedColumns = [ 'UserName', 'Email', 'DateofBirth', 'UserID', 'PhoneNumber', 'delete'];
         this.userservice.getUsersDetails().subscribe(
             userlist => {
                 userlist.forEach(x => {

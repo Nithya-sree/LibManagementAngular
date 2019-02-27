@@ -1,7 +1,11 @@
 img{
-    height: 100px;
-    width: 100px;
+    height: 50px;
+    width: 50px;
 }  
+
+.searchDiv{
+  float: right;
+}
 
 .div1{
     display:inline-block;
@@ -54,8 +58,13 @@ table {
     } 
 
     .headerCell{
-        
+        font-weight: bold;
+        font-size: 17px;
         //border-radius: 5ch;
+    }
+
+    .contentCell{
+      font-size: 15px;
     }
 
     .example-margin {

@@ -73,12 +73,12 @@
 
 
     <h2>{{ excessLimitMsg }}</h2>
-
-    <app-returnbookIndicator *ngIf="roleType"></app-returnbookIndicator>
     <div class="mainDiv">
       <ng2-smart-table 
     [settings]="settings" 
     [source]="books">
 </ng2-smart-table> 
 </div> 
+
+<app-returnbookIndicator *ngIf="roleType"></app-returnbookIndicator>
   

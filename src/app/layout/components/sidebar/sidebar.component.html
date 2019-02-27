@@ -42,11 +42,11 @@
             <span>{{ 'Change Password' | translate }}</span>
         </a>
         <a routerLink="/issuingBooks" [routerLinkActive]="['router-link-active']" class="list-group-item" *ngIf="!roleType">
-            <i class="fa fa-fw fa-user"></i>&nbsp;
+            <i class="fa fa-fw fa-edit"></i>&nbsp;
             <span>{{ 'Book Issue' | translate }}</span>
         </a>
         <a routerLink="/returnBooks" [routerLinkActive]="['router-link-active']" class="list-group-item" *ngIf="!roleType">
-            <i class="fa fa-fw fa-user"></i>&nbsp;
+            <i class="fa fa-fw fa-pencil-square-o"></i>&nbsp;
             <span>{{ 'Book Return' | translate }}</span>
         </a>
         <a routerLink="/profileDetails" [routerLinkActive]="['router-link-active']" class="list-group-item">

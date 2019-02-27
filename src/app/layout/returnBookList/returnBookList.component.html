@@ -18,16 +18,16 @@
             </ng-container>
             <ng-container matColumnDef="ReturnDate">
               <mat-header-cell *matHeaderCellDef class="headerCell">ReturnDate</mat-header-cell> 
-             <mat-cell *matCellDef="let element">{{element.ReturnDate}}</mat-cell>
+             <mat-cell *matCellDef="let element">{{element.ReturnDate | date}}</mat-cell>
            </ng-container> 
            <ng-container matColumnDef="IssuedOn">
             <mat-header-cell *matHeaderCellDef class="headerCell">IssuedOn</mat-header-cell> 
-           <mat-cell *matCellDef="let element">{{element.IssuedOn}}</mat-cell>
+           <mat-cell *matCellDef="let element">{{element.IssuedOn | date}}</mat-cell>
          </ng-container> 
          <ng-container matColumnDef="issue">
             <mat-header-cell  *matHeaderCellDef class="headerCell"> Issue </mat-header-cell>
             <mat-cell *matCellDef="let element" >
-              <mat-icon color="warn" (click)="issueBook(element)">delete</mat-icon>
+                <button type="button" [disabled]="element.Occupied" class="btn btn-primary" (click)="issueBook(element)">Return</button>
             </mat-cell>
         </ng-container>
             <ng-container matColumnDef="loading">

@@ -21,7 +21,7 @@ export class IssuingBooksListComponent implements OnInit {
   books: BlockBooks[] = [];
     constructor(private userService: UserService, private bookService: BookService) {}
     ngOnInit() {
-        this.isbnDisplayColumns = [ 'BookName', 'UserName', 'Author', 'Edition', 'ISBNNumber', 'ReturnDate', 'IssuedOn', 'issue'];
+        this.isbnDisplayColumns = [ 'BookName', 'UserName', 'Author', 'Edition', 'ISBNNumber', 'issue'];
         this.bookService.GetAllBlockedBooks().subscribe(
             booklist => {
               booklist.forEach(x => {
