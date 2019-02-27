@@ -8,12 +8,13 @@ import { MatFormFieldModule, MatPaginatorModule, MatButtonModule, MatIconModule,
 import { FormsModule } from '@angular/forms';
 import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 import { BookService } from 'src/app/shared/services/book.service';
+import { UserService } from 'src/app/shared/services/user.service';
 
 @NgModule({
     imports: [CommonModule, BooksRoutingModule, PageHeaderModule,
         FormsModule, MatPaginatorModule, MatButtonModule,
         NgbAlertModule, MatIconModule, MatTableModule, MatFormFieldModule, MatInputModule, ],
     declarations: [BooksComponent],
-    providers:[BookService]
+    providers: [BookService, UserService]
 })
 export class BooksModule {}

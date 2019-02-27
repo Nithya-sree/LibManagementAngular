@@ -45,7 +45,8 @@ export class ChangePasswordComponent implements OnInit {
         details => {
           if (details) {
             window.confirm('Password Changed Successfully');
-            localStorage.removeItem('accessToken');
+            sessionStorage.removeItem('accessToken');
+            // localStorage.removeItem('accessToken');
             localStorage.removeItem('currentUser');
             this.router.navigate(['/login']);
           }

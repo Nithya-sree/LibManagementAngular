@@ -27,7 +27,7 @@ export class BookService {
   private getUserIssuedBooks = 'https://librarymanagement20190208054654.azurewebsites.net/api/User/GetAllBooksByUserId';
   private getAllIssuedBooks = 'https://librarymanagement20190208054654.azurewebsites.net/api/User/GetAllIssuedBooks';
   private getBlockedBooks = 'https://librarymanagement20190208054654.azurewebsites.net/api/Books/GetAllBlockedBooks';
- 
+
   private handleError;
     isbnDetails;
 
@@ -113,7 +113,4 @@ export class BookService {
         catchError(this.handleError)
       );
     }
-
-    
-
 }

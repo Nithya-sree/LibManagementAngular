@@ -6,6 +6,7 @@ import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { User } from 'src/app/model/user.model';
 import { Isbn } from 'src/app/model/isbn.model';
 import { AdminConfiguration } from 'src/app/model/adminConfiguration.model';
+import { UserService } from 'src/app/shared/services/user.service';
 @Component({
     selector: 'app-tables',
     templateUrl: './books.component.html',
@@ -31,7 +32,8 @@ export class BooksComponent implements OnInit {
   checkval = false;
   configValue: AdminConfiguration;
   showIsbn: boolean;
-    constructor(private bookservice: BookService) {
+  excessLimitMsg: string;
+    constructor(private bookservice: BookService, private userService: UserService) {
 
     }
 
@@ -92,11 +94,17 @@ export class BooksComponent implements OnInit {
 
             }
           }
-          BlockBook() {
+          BlockBook(isbn: Isbn) {
+            if (window.confirm('Do u want to delete?')) {
             if (this.configValue.BookBlockLimit > this.currentUser.BlockedCopies) {
-
+                  this.userService.BlockBook(isbn).subscribe(data => {
+              if (data === true) {
+                isbn.Occupied = true;
+                }
+                  });
             } else {
-
+              this.excessLimitMsg = 'Cannot block book, As it is exceeded the config value';
             }
           }
+        }
 }

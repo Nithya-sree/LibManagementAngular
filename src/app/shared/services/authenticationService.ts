@@ -24,7 +24,8 @@ export class AuthenticationService {
         return this.http.post<any>('https://librarymanagement20190208054654.azurewebsites.net/token', body, { headers: getHeaders })
         .pipe(map(user => {
             if (user && user.access_token) {
-                localStorage.setItem('accessToken', user.access_token);
+                // localStorage.setItem('accessToken', user.access_token);
+                sessionStorage.setItem('accessToken', user.access_token);
             }
             return true;
         }));
@@ -53,22 +54,16 @@ export class AuthenticationService {
         .pipe(map(res => {
         return true;
         }));
-        // .pipe(map((res: Response) => {
-        //     console.log(res);
-        //     if (res) {
-        //         if (res.status === 201 || res.status === 200) {
-        //             return true
-        //         }
-        //     }
-        // }), catchError(this.handleError));
     }
 
     public getToken(): string {
-      return localStorage.getItem('accessToken');
+        // localStorage.getItem('accessToken');
+      return sessionStorage.getItem('accessToken');
     }
 
     logout() {
-        localStorage.removeItem('accessToken');
+        sessionStorage.removeItem('accessToken');
+        // localStorage.removeItem('accessToken');
         localStorage.removeItem('currentUser');
         localStorage.clear();
     }

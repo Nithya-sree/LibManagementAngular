@@ -8,7 +8,8 @@ export class AuthGuard implements CanActivate {
 
     canActivate() {
         // localStorage.getItem('isLoggedin')
-        if (localStorage.getItem('accessToken')) {
+        // localStorage.getItem('accessToken')
+        if (sessionStorage.getItem('accessToken')) {
             return true;
         }
 

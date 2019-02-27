@@ -72,4 +72,8 @@ export class ProfileDetailsComponent implements OnInit {
               console.log('Error', error);
               });
     }
+
+    onCancel() {
+
+    }
 }
