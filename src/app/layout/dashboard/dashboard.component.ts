@@ -16,23 +16,37 @@ export class DashboardComponent implements OnInit {
     constructor() {
         this.sliders.push(
             {
-                imagePath: 'assets/images/slider1.jpg',
-                label: 'First slide label',
-                text:
-                    'Nulla vitae elit libero, a pharetra augue mollis interdum.'
+            imagePath: 'assets/images/aws.jpg',
+            label: '',
+            text:
+            ''
             },
             {
-                imagePath: 'assets/images/slider2.jpg',
-                label: 'Second slide label',
-                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+            imagePath: 'assets/images/big-data-analytics.png',
+            label: '',
+            text: 'JAMES SMITH'
             },
             {
-                imagePath: 'assets/images/slider3.jpg',
-                label: 'Third slide label',
-                text:
-                    'Praesent commodo cursus magna, vel scelerisque nisl consectetur.'
+            imagePath: 'assets/images/Datascience.jpg',
+            label: 'Building NODE.Js restful API with TDD',
+            text: 'JAKE VANDERPLAS'
+            },
+            {
+            imagePath: 'assets/images/Node.png',
+            label: '',
+            text: 'N. A. Smith'
+            },
+            {
+            imagePath: 'assets/images/cBook.png',
+            label: 'ORGANIC CHEMISTRY',
+            text:'R. K. GUPTA'
+            },
+            {
+            imagePath: 'assets/images/TheLeadingEdge.jpg',
+            label: '',
+            text:'Ray Toal. Jhon David'
             }
-        );
+            ); 
 
         this.alerts.push(
             {

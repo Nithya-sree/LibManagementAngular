@@ -165,6 +165,7 @@ getBookData() {
   AddNew() {
    this.isNewBookAdded = true;
    this.isIncreasedBooks = false;
+   this.ngOnInit();
 
   }
   AddExisting() {

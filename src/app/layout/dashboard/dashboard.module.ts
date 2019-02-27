@@ -18,6 +18,7 @@ import { ConfigurationService } from 'src/app/shared/services/configurationServi
 import { AuthenticationService } from 'src/app/shared/services/authenticationService';
 import { UserService } from 'src/app/shared/services/user.service';
 import { IssuedBookListComponent } from './components/userIssuedBookList/issuedBookList.component';
+import { BookDetailsDonutChartComponent } from './components/bookdetailsdonutchart/bookdetailsdonutchart.component';
 
 @NgModule({
     imports: [
@@ -31,7 +32,7 @@ import { IssuedBookListComponent } from './components/userIssuedBookList/issuedB
         DashboardComponent,
         TimelineComponent,
         NotificationComponent,
-        ChatComponent, BookListComponent, IssuedBookListComponent
+        ChatComponent, BookListComponent, IssuedBookListComponent,BookDetailsDonutChartComponent
     ],
     providers: [ BookService, ConfigurationService, AuthenticationService, UserService]
 })

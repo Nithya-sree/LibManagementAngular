@@ -31,11 +31,11 @@
         </a>
         <a routerLink="/createbook" [routerLinkActive]="['router-link-active']" class="list-group-item" *ngIf="!roleType">
             <i class="fa fa-fw fa-plus"></i>&nbsp;
-            <span>{{ 'Create Book' | translate }}</span>
+            <span>{{ 'Add Book' | translate }}</span>
         </a>
         <a routerLink="/books" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-fw fa-book"></i>&nbsp;
-            <span>{{ 'Books' | translate }}</span>
+            <span>{{ 'Book List' | translate }}</span>
         </a>
         <a routerLink="/changePassword" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-fw fa-key"></i>&nbsp;
@@ -43,24 +43,24 @@
         </a>
         <a routerLink="/issuingBooks" [routerLinkActive]="['router-link-active']" class="list-group-item" *ngIf="!roleType">
             <i class="fa fa-fw fa-user"></i>&nbsp;
-            <span>{{ 'Books for issue' | translate }}</span>
+            <span>{{ 'Book Issue' | translate }}</span>
         </a>
         <a routerLink="/returnBooks" [routerLinkActive]="['router-link-active']" class="list-group-item" *ngIf="!roleType">
             <i class="fa fa-fw fa-user"></i>&nbsp;
-            <span>{{ 'Return Books' | translate }}</span>
+            <span>{{ 'Book Return' | translate }}</span>
         </a>
         <a routerLink="/profileDetails" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-fw fa-user"></i>&nbsp;
             <span>{{ 'Profile' | translate }}</span>
         </a>
-        <a [routerLink]="['/charts']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+        <!-- <a [routerLink]="['/charts']" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-fw fa-bar-chart-o"></i>&nbsp;
             <span>{{ 'Charts' | translate }}</span>
         </a>
         <a [routerLink]="['/tables']" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-fw fa-table"></i>&nbsp;
             <span>{{ 'Tables' | translate }}</span>
-        </a>
+        </a> -->
         <!-- <a [routerLink]="['/forms']" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-fw fa-edit"></i>&nbsp;
             <span>{{ 'Forms' | translate }}</span>
@@ -105,10 +105,10 @@
                 </ul>
             </li>
         </div> -->
-        <a [routerLink]="['/blank-page']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+        <!-- <a [routerLink]="['/blank-page']" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-file-o"></i>&nbsp;
             <span>{{ 'Blank Page' | translate }}</span>
-        </a>
+        </a> -->
         <!-- <a href="http://www.strapui.com/" class="list-group-item">
             <i class="fa fa-caret-down"></i>&nbsp;
             <span>{{ 'More Themes' | translate }}</span>
