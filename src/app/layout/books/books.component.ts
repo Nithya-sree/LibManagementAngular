@@ -33,11 +33,45 @@ export class BooksComponent implements OnInit {
   configValue: AdminConfiguration;
   showIsbn: boolean;
   excessLimitMsg: string;
+  settings;
+  characters;
     constructor(private bookservice: BookService, private userService: UserService) {
 
     }
 
+    getDemoData(): any {
+      let data: [
+        {
+            'id': '1',
+            'name': 'Peter Dinklage',
+            'age': '45'
+        },
+        {
+            'id': '2',
+            'name': 'Lina Heady',
+            'age': '43'
+        },
+        {
+            'id': '3',
+            'name': 'Emilia Clarke',
+            'age': '30'
+        },
+        {
+            'id': '4',
+            'name': 'Kit Harrington',
+            'age': '30'
+        },
+        {
+            'id': '5',
+            'name': 'Sean Bean',
+            'age': '50'
+        }];
+        return data;
+    }
+
     ngOnInit() {
+
+
           this.configValue = JSON.parse(localStorage.getItem('configValues'));
           this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
           if (this.currentUser !== null) {
@@ -52,7 +86,26 @@ export class BooksComponent implements OnInit {
           booklist => {
             booklist.forEach(x => {
                 this.books.push(x);
-
+                this.settings = {
+                  columns: {
+                    TrackNo: {
+                      title: 'TrackNo'
+                    },
+                    BookName: {
+                      title: 'BookName'
+                    },
+                    Author: {
+                      title: 'Author'
+                    },
+                    Description: {
+                      title: 'Description'
+                    },
+                    PublishingYear: {
+                      title: 'PublishingYear'
+                    }
+                   },
+                  actions: false
+                };
               });
               console.log('isbn details all' + JSON.stringify(this.books));
             this.dataSource = new MatTableDataSource(this.books);

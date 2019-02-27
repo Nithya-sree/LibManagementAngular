@@ -9,11 +9,15 @@ import { FormsModule } from '@angular/forms';
 import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 import { BookService } from 'src/app/shared/services/book.service';
 import { UserService } from 'src/app/shared/services/user.service';
+import { ChartsModule as Ng2Charts } from 'ng2-charts';
+import { Ng2SmartTableModule } from 'ng2-smart-table';
 
 @NgModule({
     imports: [CommonModule, BooksRoutingModule, PageHeaderModule,
         FormsModule, MatPaginatorModule, MatButtonModule,
-        NgbAlertModule, MatIconModule, MatTableModule, MatFormFieldModule, MatInputModule, ],
+        NgbAlertModule, MatIconModule, MatTableModule, MatFormFieldModule, MatInputModule,
+        Ng2SmartTableModule
+    ],
     declarations: [BooksComponent],
     providers: [BookService, UserService]
 })
