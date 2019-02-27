@@ -101,7 +101,7 @@ getBookData() {
       Edition: ['', Validators.required],
       Author: ['', Validators.required],
       PublishingYear: ['', Validators.required],
-      Description: [',', Validators.required]
+      Description: ['', Validators.required]
       });
   }
   onSubmit() {
@@ -164,6 +164,7 @@ getBookData() {
   AddNew() {
    this.isNewBookAdded = true;
    this.isIncreasedBooks = false;
+   this.ngOnInit();
 
   }
   AddExisting() {
