@@ -1,16 +1,10 @@
-<div class="search-div">
+<!-- <div class="search-div">
     <mat-form-field class="search-form-field" floatLabel="never">
       <input matInput [(ngModel)]="searchKey" placeholder="search" autocomplete="off"  (keyup)="applyFilter()">
       <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="onSearchClear()" *ngIf="searchKey">
         <mat-icon>close</mat-icon>
       </button>
     </mat-form-field>
-  </div>
-  <div>
-      <mat-paginator [length]="100"
-      [pageSize]="10"
-      [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons>
-  </mat-paginator>
   </div>
     <div class="mat-elevation-z8 " >  
       <mat-table class="book-table-container" [dataSource]="dataSource" >
@@ -69,12 +63,18 @@
     <mat-footer-row *matFooterRowDef="['nodata']" [ngClass]="{'hide':!(dataSource!=null && dataSource.data.length==0)}"></mat-footer-row>
       </mat-table>
     </div> 
+    <div>
+        <mat-paginator [length]="100"
+        [pageSize]="10"
+        [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons>
+    </mat-paginator>
+    </div>
+    <h2>{{ excessLimitMsg }}</h2> -->
 
-    <h2>{{ excessLimitMsg }}</h2>
-
-
-     <!-- <ng2-smart-table 
+<div class="mainDiv">
+      <ng2-smart-table class="smarttable" 
     [settings]="settings" 
     [source]="books">
-</ng2-smart-table>  -->
+</ng2-smart-table> 
+</div> 
   

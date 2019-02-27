@@ -87,6 +87,8 @@ export class BooksComponent implements OnInit {
             booklist.forEach(x => {
                 this.books.push(x);
                 this.settings = {
+                  hideSubHeader: true,
+                  actions: false,
                   columns: {
                     TrackNo: {
                       title: 'TrackNo'
@@ -103,8 +105,7 @@ export class BooksComponent implements OnInit {
                     PublishingYear: {
                       title: 'PublishingYear'
                     }
-                   },
-                  actions: false
+                   }
                 };
               });
               console.log('isbn details all' + JSON.stringify(this.books));

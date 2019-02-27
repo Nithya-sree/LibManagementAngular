@@ -61,7 +61,7 @@ export class ProfileDetailsComponent implements OnInit {
     //     reader.readAsDataURL(this.fileToUpload);
     //   }
       UploadImage(event) {
-        this.isImageUploaded =true;
+        this.isImageUploaded = true;
         if (event.target.files && event.target.files[0]) {
           const reader = new FileReader();
         reader.onload = (event: ProgressEvent) => {
@@ -84,18 +84,18 @@ export class ProfileDetailsComponent implements OnInit {
               });
     }
 
-    InitializeUserDetails() {
-      this.userDetails.setValue({
-        FirstName: '',
-        LastName: '',
-        MiddleName: '',
-        DateOfBirth: '',
-        PhoneNumber: ''
-      });
+    // InitializeUserDetails() {
+    //   this.userDetails.setValue({
+    //     FirstName: '',
+    //     LastName: '',
+    //     MiddleName: '',
+    //     DateOfBirth: '',
+    //     PhoneNumber: ''
+    //   });
 
-    }
-    onClose() {
-      this.userDetails.reset();
-      this.InitializeUserDetails();
-    }
+    // }
+    // onClose() {
+    //   this.userDetails.reset();
+    //   this.InitializeUserDetails();
+    // }
 }

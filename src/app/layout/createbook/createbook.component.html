@@ -52,15 +52,14 @@
                 <input matInput placeholder="Description" formControlName="Description">
               </mat-form-field>
             </div>
-            <div class="col-md-4">
-              <div class="formGroup">
-                <input type="file" #Image accept="image/*" (change)="uploadImage($event)" id=image formControlName="Image">
-                <img [src]="url" height="100" *ngIf="isImageUploaded"  style="margin:10px"> <br />
-              </div>
-            </div>
+            
           </ng-container>
         </ng-container>
-
+        <div class="col-md-4">
+            
+              <input type="file" #Image accept="image/*" (change)="uploadImage($event)" id=image >
+              <img [src]="url" height="100" *ngIf="isImageUploaded"  style="margin:10px"> <br />
+          </div>
         <div class="col-md-12">
           <button mat-raised-button color="primary" style="margin: 10px; float:right">Add</button>
           <button mat-raised-button color="warn" (click)="onClose()" tabIndex="-1" style="margin: 10px; float:right">cancel</button>
@@ -124,14 +123,13 @@
                       <mat-datepicker #picker></mat-datepicker>
                     </mat-form-field>
                   </div>
-                  <div class="col-md-4">
-                    <div class="formGroup">
-                      <input type="file" #Image accept="image/*" (change)="uploadImage($event)" id=image>
-                      <img [src]="url" height="100" *ngIf="isImageUploaded" style="margin:10px"> <br />
-                    </div>
-                  </div>
+                  
                 </ng-container>
               </ng-container>
+              <div class="col-md-4">
+                    <input type="file" #Image accept="image/*" (change)="uploadImage($event)" id=image>
+                    <img [src]="url" height="100" *ngIf="isImageUploaded" style="margin:10px"> <br />
+                </div>
             <div class="col-md-12">
               <button mat-raised-button color="primary" style="margin: 10px; float: right;">Add</button>
               <button mat-raised-button color="warn" (click)="onClose()" tabIndex="-1" style="margin: 10px; float: right;">cancel</button>

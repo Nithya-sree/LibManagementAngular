@@ -1,22 +1,12 @@
 
-  <div class="search-div col-md-6" class="form-group" >
-    <!-- <button mat-raised-button (click)="CreateBook()" *ngIf="!roleType">
-      <mat-icon>add</mat-icon>create
-    </button> -->
-    <mat-form-field class="search-form-field" style="widows: 28%;" floatLabel="never">
-      <input matInput [(ngModel)]="searchKey" placeholder="search" autocomplete="off"  (keyup)="applyFilter($event.target.value)">
+ <div class="search-div">
+    <mat-form-field class="search-form-field" floatLabel="never">
+      <input matInput [(ngModel)]="searchKey" placeholder="search" autocomplete="off"  (keyup)="applyFilter()">
       <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="onSearchClear()" *ngIf="searchKey">
         <mat-icon>close</mat-icon>
       </button>
     </mat-form-field>
-   
   </div>
-  
-
-
-  
-  
-  
     <div class="mat-elevation-z8 tablediv">  
       <mat-table class="book-table-container" [dataSource]="dataSource" >
           <ng-container matColumnDef="Image">

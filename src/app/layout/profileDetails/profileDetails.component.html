@@ -1,6 +1,6 @@
 <div class="login-page">
         <div class="form">
-          <form [formGroup]="userDetails" (submit)="editUserDetails(Image)"  class="form-inline">
+          <form [formGroup]="userDetails"  class="form-inline">
             <div class="row">
             <div class="col-md-4">
                 <mat-form-field class="example-full-width">
@@ -48,10 +48,9 @@
                 
           <!-- <div class="col-md-3" class="form-group">   </div> -->
             <div  class="col-md-12">
-                  <button [disabled]="loading" style="margin: 10px; float: right;" mat-raised-button color="primary">Save</button>
+                  <button  style="margin: 10px; float: right;" (click)="editUserDetails(Image)" mat-raised-button color="primary">Save</button>
                   <button mat-raised-button color="warn" (click)="onClose()" tabIndex="-1" style="margin: 10px; float:right">cancel</button>
                 </div>
-            <button mat-raised-button (click)="openDialog()">Pick one</button>
           </div>
           </form>
         </div>

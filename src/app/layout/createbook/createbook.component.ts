@@ -65,7 +65,7 @@ getBookData() {
 }
 
   ngOnInit() {
-    
+
     this.getBookData();
     this.CreateNewBook = this.formBuilder.group(
       {
@@ -102,7 +102,7 @@ getBookData() {
       Edition: ['', Validators.required],
       Author: ['', Validators.required],
       PublishingYear: ['', Validators.required],
-      Description: [',', Validators.required]
+      Description: ['', Validators.required]
       });
   }
   onSubmit() {
@@ -178,11 +178,11 @@ getBookData() {
   uploadImage(event) {
     this.isImageUploaded=true;
         if (event.target.files && event.target.files[0]) {
-          var reader = new FileReader();
+          let reader = new FileReader();
         reader.onload = (event: ProgressEvent) => {
           this.url = (<FileReader>event.target).result;
-        }
-    
+        };
+
         reader.readAsDataURL(event.target.files[0]);
       }
         console.log(event);
