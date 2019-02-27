@@ -60,15 +60,14 @@ export class ProfileDetailsComponent implements OnInit {
     //     };
     //     reader.readAsDataURL(this.fileToUpload);
     //   }
-      UploadImage(event)
-      {
-        this.isImageUploaded=true;
+      UploadImage(event) {
+        this.isImageUploaded =true;
         if (event.target.files && event.target.files[0]) {
-          var reader = new FileReader();
+          const reader = new FileReader();
         reader.onload = (event: ProgressEvent) => {
           this.url = (<FileReader>event.target).result;
-        }
-    
+        };
+
         reader.readAsDataURL(event.target.files[0]);
       }
         console.log(event);
@@ -85,16 +84,15 @@ export class ProfileDetailsComponent implements OnInit {
               });
     }
 
-    InitializeUserDetails()
-    {
+    InitializeUserDetails() {
       this.userDetails.setValue({
-        FirstName:'',
-        LastName:'',
-        MiddleName:'',
-        DateOfBirth:'',
-        PhoneNumber:''
-      })
-      
+        FirstName: '',
+        LastName: '',
+        MiddleName: '',
+        DateOfBirth: '',
+        PhoneNumber: ''
+      });
+
     }
     onClose() {
       this.userDetails.reset();

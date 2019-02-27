@@ -28,12 +28,12 @@
             <mat-header-cell *matHeaderCellDef class="headerCell">IssuedOn</mat-header-cell> 
            <mat-cell *matCellDef="let element">{{element.IssuedOn}}</mat-cell>
          </ng-container> 
-            <!-- <ng-container matColumnDef="issue">
+            <ng-container matColumnDef="issue">
               <mat-header-cell  *matHeaderCellDef class="headerCell"> Issue </mat-header-cell>
               <mat-cell *matCellDef="let element" >
                 <mat-icon color="warn" (click)="issueBook(element)">delete</mat-icon>
               </mat-cell>
-          </ng-container> -->
+          </ng-container>
             <ng-container matColumnDef="loading">
               <mat-footer-cell *matFooterCellDef colspan="6">
                 Loading data...

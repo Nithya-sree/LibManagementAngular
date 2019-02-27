@@ -55,7 +55,8 @@ export class HeaderComponent implements OnInit {
 
     onLoggedout() {
         // localStorage.removeItem('isLoggedin');
-        localStorage.removeItem('accessToken');
+        // localStorage.removeItem('accessToken');
+        sessionStorage.removeItem('accessToken');
         localStorage.clear();
 
     }

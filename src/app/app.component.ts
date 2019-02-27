@@ -12,8 +12,8 @@ export class AppComponent implements OnInit {
 
     doSomething($event: any) {
 
-        localStorage.clear();
-        console.log($event);
+        // localStorage.clear();
+        // console.log($event);
     }
     constructor() {
     }

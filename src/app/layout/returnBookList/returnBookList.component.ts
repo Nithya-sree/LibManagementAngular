@@ -5,6 +5,7 @@ import { Isbn } from 'src/app/model/isbn.model';
 import { UserService } from 'src/app/shared/services/user.service';
 import { BookService } from 'src/app/shared/services/book.service';
 import { BlockBooks } from 'src/app/model/blockBooks';
+import { IssueBooks } from 'src/app/model/issueBooks';
 
 @Component({
     selector: 'app-returnbooklist',
@@ -17,12 +18,12 @@ export class ReturnBookListComponent implements OnInit {
     dataSource: MatTableDataSource<any>;
     searchKey: string;
     isbnDisplayColumns: string[];
-    books: BlockBooks[] = [];
+    books: IssueBooks[] = [];
       constructor(private userService: UserService, private bookService: BookService) {}
 
       ngOnInit() {
-          this.isbnDisplayColumns = [ 'Name', 'Author', 'Edition', 'ISBNNumber', 'ReturnDate', 'IssuedOn'];
-          this.bookService.GetAllBlockedBooks().subscribe(
+          this.isbnDisplayColumns = [ 'Name', 'Author', 'Edition', 'ISBNNumber', 'ReturnDate', 'IssuedOn', 'issue'];
+          this.bookService.GetAllIssuedBooks().subscribe(
               booklist => {
                 booklist.forEach(x => {
                     this.books.push(x);
@@ -35,5 +36,9 @@ export class ReturnBookListComponent implements OnInit {
                  console.log('GetAllIssuedBooks' + error);
               }
             );
+      }
+
+      issueBook(book: BlockBooks) {
+
       }
 }

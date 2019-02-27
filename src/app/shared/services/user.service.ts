@@ -13,6 +13,7 @@ import { errorHandler } from '@angular/platform-browser/src/browser';
 import { makeParamDecorator } from '@angular/core/src/util/decorators';
 import { LoginComponent } from 'src/app/login/login.component';
 import { IssueBooks } from 'src/app/model/issueBooks';
+import { BlockBooks } from 'src/app/model/blockBooks';
 
 @Injectable()
 export class UserService {
@@ -88,15 +89,13 @@ export class UserService {
        'Author': isbn.Author, 'ISBNNumber': isbn.TrackNo, 'Edition': isbn.Edition, 'PublishingYear': isbn.PublishingYear };
       return this.http.post(this.BlockBooksByUser, blockedBook).pipe(
         map((res: Response) => {
-          if (res !== null) {
             return true;
-          }
       }));
     }
 
-    issueBook(issuedBook: IssueBooks): any {
-      // const blockedBook = {'BookID': isbn.BookID, 'UserName': '', 'BookName': isbn.BookName,
-      // 'Author': isbn.Author, 'ISBNNumber': isbn.TrackNo, 'Edition': isbn.Edition, 'PublishingYear': isbn.PublishingYear };
+    issueBook(blockBooks: BlockBooks): any {
+       const issuedBook = {'BookID': blockBooks.BookID, 'UserName': blockBooks.UserName, 'BookName': blockBooks.BookName,
+       'Author': blockBooks.Author, 'Edition': blockBooks.Edition, 'ISBNNumber': blockBooks.ISBNNumber, 'IssuedOn' : '', 'ReturnDate': '' };
       return this.http.post(this.BookIssueByAdmin, issuedBook).pipe(
         map((res: Response) => {
           if (res !== null) {

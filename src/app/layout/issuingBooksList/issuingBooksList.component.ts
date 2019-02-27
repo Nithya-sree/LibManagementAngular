@@ -5,6 +5,7 @@ import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { Isbn } from 'src/app/model/isbn.model';
 import { BookService } from 'src/app/shared/services/book.service';
 import { IssueBooks } from 'src/app/model/issueBooks';
+import { BlockBooks } from 'src/app/model/blockBooks';
 
 @Component({
     selector: 'app-issuingbookslist',
@@ -17,12 +18,11 @@ export class IssuingBooksListComponent implements OnInit {
   dataSource: MatTableDataSource<any>;
   searchKey: string;
   isbnDisplayColumns: string[];
-  books: IssueBooks[] = [];
+  books: BlockBooks[] = [];
     constructor(private userService: UserService, private bookService: BookService) {}
-
     ngOnInit() {
         this.isbnDisplayColumns = [ 'BookName', 'UserName', 'Author', 'Edition', 'ISBNNumber', 'ReturnDate', 'IssuedOn', 'issue'];
-        this.bookService.GetAllIssuedBooks().subscribe(
+        this.bookService.GetAllBlockedBooks().subscribe(
             booklist => {
               booklist.forEach(x => {
                   this.books.push(x);
@@ -32,12 +32,23 @@ export class IssuingBooksListComponent implements OnInit {
               this.dataSource.paginator = this.paginator;
             },
             error => {
-               console.log('GetAllIssuedBooks' + error);
-            }
-          );
+               console.log('GetAllBlockedBooks' + error);
+            });
     }
-
-    issueBook(issuedBook: IssueBooks) {
-
+    issueBook(issuedBook: BlockBooks) {
+      if (window.confirm('do u want to issue?')) {
+        this.userService.issueBook(issuedBook).subscribe(data => {
+    if (data) {
+      const i = this.books.findIndex(e => e.ISBNNumber === issuedBook.ISBNNumber);
+    if (i !== -1) {
+    this.books.splice(i, 1);
+    this.dataSource = new MatTableDataSource(this.books);
+    }}
+        },
+        error => {
+           console.log('GetAllBlockedBooks' + error);
+        }
+        );
+      }
     }
 }
